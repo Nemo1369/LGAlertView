@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSArray *titlesArray;
 @property (strong, nonatomic) LGAlertView *securityAlertView;
+@property (strong, nonatomic) NSMutableArray *selectedButton;
 
 @end
 
@@ -298,45 +299,39 @@
     }
     else if (indexPath.row == 11)
     {
+        _selectedButton = [NSMutableArray new];
+        NSArray *buttonTitles = @[@"Button 1",@"Button 2", @"Button 3",@"Button 4",@"Button 5", @"Button 6",@"Button 7",@"Button 8", @"Button 9"];
+        
         LGAlertView *alertView = [[LGAlertView alloc] initWithTitle:@"A lot of buttons"
                                                             message:@"You can scroll it"
                                                               style:LGAlertViewStyleAlert
-                                                       buttonTitles:@[@"Button 1",
-                                                                      @"Button 2",
-                                                                      @"Button 3",
-                                                                      @"Button 4",
-                                                                      @"Button 5",
-                                                                      @"Button 6",
-                                                                      @"Button 7",
-                                                                      @"Button 8",
-                                                                      @"Button 9",
-                                                                      @"Button 10",
-                                                                      @"Button 12",
-                                                                      @"Button 13",
-                                                                      @"Button 14",
-                                                                      @"Button 15",
-                                                                      @"Button 16",
-                                                                      @"Button 17",
-                                                                      @"Button 18",
-                                                                      @"Button 19",
-                                                                      @"Button 20",
-                                                                      @"Button 21",
-                                                                      @"Button 22",
-                                                                      @"Button 23",
-                                                                      @"Button 24",
-                                                                      @"Button 25"]
+                                                       buttonTitles:buttonTitles
                                                   cancelButtonTitle:@"Cancel"
-                                             destructiveButtonTitle:@"Destructive"
+                                             destructiveButtonTitle:nil
                                                       actionHandler:^(LGAlertView *alertView, NSString *title, NSUInteger index) {
                                                           NSLog(@"actionHandler, %@, %lu", title, (long unsigned)index);
+                                                          
+                                                          NSString *buttonTitle = [buttonTitles objectAtIndex:(NSUInteger)index];
+                                                          if ([self.selectedButton containsObject:buttonTitle]) {
+                                                              // Remove
+                                                              [self.selectedButton removeObject:buttonTitle];
+                                                          } else {
+                                                              // Add
+                                                              [self.selectedButton addObject:buttonTitle];
+                                                          }
                                                       }
                                                       cancelHandler:^(LGAlertView *alertView) {
                                                           NSLog(@"cancelHandler");
+                                                          NSLog(@"Selected Buttons %@", self.selectedButton);
                                                       }
                                                  destructiveHandler:^(LGAlertView *alertView) {
                                                      NSLog(@"destructiveHandler");
+                                                     NSLog(@"Selected Buttons %@", self.selectedButton);
                                                  }];
         alertView.heightMax = 256.f;
+        alertView.multipleSelection = YES;
+        alertView.buttonsBackgroundColorHighlighted = [UIColor clearColor];
+        alertView.buttonsTitleColorHighlighted = [UIColor blueColor];
         [alertView showAnimated:YES completionHandler:nil];
     }
     else if (indexPath.row == 12)

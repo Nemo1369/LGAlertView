@@ -165,6 +165,7 @@ typedef NS_ENUM(NSUInteger, LGAlertViewWindowLevel)
 @property (assign, nonatomic, getter=isShowsVerticalScrollIndicator) BOOL showsVerticalScrollIndicator;
 @property (assign, nonatomic, getter=isPadShowActionSheetFromBottom) BOOL padShowsActionSheetFromBottom;
 @property (assign, nonatomic, getter=isOneRowOneButton) BOOL oneRowOneButton;
+@property (assign, nonatomic) BOOL multipleSelection;
 
 @property (strong, nonatomic, readonly) NSMutableArray *textFieldsArray;
 

@@ -1619,7 +1619,17 @@ LGAlertViewType;
 
         // -----
 
-        [self actionActionAtIndex:index title:title];
+        if (_multipleSelection) {
+            UITableViewCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
+            if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            [self actionActionAtIndex:index title:title];
+        } else {
+            [self actionActionAtIndex:index title:title];
+        }
     }
 }
 
@@ -2812,18 +2822,22 @@ LGAlertViewType;
 {
     if (_actionHandler) _actionHandler(self, title, index);
 
-    if (_delegate && [_delegate respondsToSelector:@selector(alertView:buttonPressedWithTitle:index:)])
-        [_delegate alertView:self buttonPressedWithTitle:title index:index];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:kLGAlertViewActionNotification
-                                                        object:self
-                                                      userInfo:@{@"title" : title,
-                                                                 @"index" : [NSNumber numberWithInteger:index]}];
-
-    // -----
-
-    if (_dismissOnAction)
-        [self dismissAnimated:YES completionHandler:nil];
+    if (!_multipleSelection) {
+        if (_delegate && [_delegate respondsToSelector:@selector(alertView:buttonPressedWithTitle:index:)])
+            
+            
+            [_delegate alertView:self buttonPressedWithTitle:title index:index];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLGAlertViewActionNotification
+                                                            object:self
+                                                          userInfo:@{@"title" : title,
+                                                                     @"index" : [NSNumber numberWithInteger:index]}];
+        
+        // -----
+        
+        if (_dismissOnAction)
+            [self dismissAnimated:YES completionHandler:nil];
+    }
 }
 
 - (void)firstButtonAction:(id)sender
