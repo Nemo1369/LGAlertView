@@ -1,7 +1,6 @@
 # LGAlertView
 
 Customizable implementation of UIAlertViewController, UIAlertView and UIActionSheet. All in one.
-You can customize every detail. Make AlertView of your dream! :)
 
 ## Preview
 
