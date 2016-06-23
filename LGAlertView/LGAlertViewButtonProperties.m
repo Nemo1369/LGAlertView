@@ -31,11 +31,9 @@
 
 @implementation LGAlertViewButtonProperties
 
-- (id)initWithCoder:(NSCoder *)coder
-{
+- (id)initWithCoder:(NSCoder *)coder {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _titleColor = [coder decodeObjectForKey:@"titleColor"];
         _titleColorHighlighted = [coder decodeObjectForKey:@"titleColorHighlighted"];
         _titleColorDisabled = [coder decodeObjectForKey:@"titleColorDisabled"];
@@ -47,8 +45,7 @@
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)coder
-{
+- (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:_titleColor forKey:@"titleColor"];
     [coder encodeObject:_titleColorHighlighted forKey:@"titleColorHighlighted"];
     [coder encodeObject:_titleColorDisabled forKey:@"titleColorDisabled"];
@@ -60,92 +57,79 @@
 
 #pragma mark -
 
-- (void)setTitleColor:(UIColor *)titleColor
-{
+- (void)setTitleColor:(UIColor *)titleColor {
     _titleColor = titleColor;
 
     _userTitleColor = YES;
 }
 
-- (void)setTitleColorHighlighted:(UIColor *)titleColorHighlighted
-{
+- (void)setTitleColorHighlighted:(UIColor *)titleColorHighlighted {
     _titleColorHighlighted = titleColorHighlighted;
 
     _userTitleColorHighlighted = YES;
 }
 
-- (void)setTitleColorDisabled:(UIColor *)titleColorDisabled
-{
+- (void)setTitleColorDisabled:(UIColor *)titleColorDisabled {
     _titleColorDisabled = titleColorDisabled;
 
     _userTitleColorDisabled = YES;
 }
 
-- (void)setTextAlignment:(NSTextAlignment)textAlignment
-{
+- (void)setTextAlignment:(NSTextAlignment)textAlignment {
     _textAlignment = textAlignment;
 
     _userTextAlignment = YES;
 }
 
-- (void)setFont:(UIFont *)font
-{
+- (void)setFont:(UIFont *)font {
     _font = font;
 
     _userFont = YES;
 }
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor
-{
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
     _backgroundColor = backgroundColor;
 
     _userBackgroundColor = YES;
 }
 
-- (void)setBackgroundColorHighlighted:(UIColor *)backgroundColorHighlighted
-{
+- (void)setBackgroundColorHighlighted:(UIColor *)backgroundColorHighlighted {
     _backgroundColorHighlighted = backgroundColorHighlighted;
 
     _userBackgroundColorHighlighted = YES;
 }
 
-- (void)setBackgroundColorDisabled:(UIColor *)backgroundColorDisabled
-{
+- (void)setBackgroundColorDisabled:(UIColor *)backgroundColorDisabled {
     _backgroundColorDisabled = backgroundColorDisabled;
 
     _userBackgroundColorDisabled = YES;
 }
 
-- (void)setNumberOfLines:(NSUInteger)numberOfLines
-{
+- (void)setNumberOfLines:(NSUInteger)numberOfLines {
     _numberOfLines = numberOfLines;
 
     _userNumberOfLines = YES;
 }
 
-- (void)setLineBreakMode:(NSLineBreakMode)lineBreakMode
-{
+- (void)setLineBreakMode:(NSLineBreakMode)lineBreakMode {
     _lineBreakMode = lineBreakMode;
 
     _userLineBreakMode = YES;
 }
 
-- (void)setMinimumScaleFactor:(CGFloat)minimumScaleFactor
-{
+- (void)setMinimumScaleFactor:(CGFloat)minimumScaleFactor {
     _minimumScaleFactor = minimumScaleFactor;
 
     _userMinimumScaleFactor = YES;
 }
 
-- (void)setAdjustsFontSizeToFitWidth:(BOOL)adjustsFontSizeToFitWidth
-{
+- (void)setAdjustsFontSizeToFitWidth:(BOOL)adjustsFontSizeToFitWidth {
     _adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
 
     _userAdjustsFontSizeTofitWidth = YES;
 }
 
-- (void)setEnabled:(BOOL)enabled
-{
+- (void)setEnabled:(BOOL)enabled {
     _enabled = enabled;
 
     _userEnabled = YES;
